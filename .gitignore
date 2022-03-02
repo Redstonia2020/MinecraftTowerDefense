@@ -338,3 +338,7 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/buildings
+/Assets/TextMesh Pro
+/Library
+/Temp
