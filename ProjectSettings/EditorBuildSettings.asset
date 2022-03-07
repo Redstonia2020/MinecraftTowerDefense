@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Selection/StoryModeSelection.unity
     guid: 1e2a20d2b3bb7e44393b33832dd9a8d6
+  - enabled: 1
+    path: Assets/Scenes/StoryMode/Plains.unity
+    guid: 1a146f0e54770274d86c7527158a4c85
   m_configObjects: {}
