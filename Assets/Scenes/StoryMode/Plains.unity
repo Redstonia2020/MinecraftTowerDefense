@@ -58050,7 +58050,7 @@ GameObject:
   - component: {fileID: 2041730681}
   m_Layer: 0
   m_Name: Level
-  m_TagString: Untagged
+  m_TagString: level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61384,6 +61384,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1982001914, guid: 2015baf07f8ec664f8cd2e2ab5b29873, type: 3}
+      propertyPath: _pathStartLocation.Row
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1982001914, guid: 2015baf07f8ec664f8cd2e2ab5b29873, type: 3}
+      propertyPath: _pathStartLocation.Column
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6134556669648689159, guid: 2015baf07f8ec664f8cd2e2ab5b29873, type: 3}
       propertyPath: m_RootOrder
       value: 0
