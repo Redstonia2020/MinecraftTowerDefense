@@ -25,7 +25,6 @@ public class TileController : MonoBehaviour
     void OnMouseDown()
     {
         var coords = LevelController.GetTilePosition(this);
-        Debug.Log($"{coords.Row} {coords.Column}");
 
         if (LevelController.Phase == LevelPhase.Pathmaking)
         {

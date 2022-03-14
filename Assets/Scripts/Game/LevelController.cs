@@ -17,9 +17,10 @@ public static class LevelController
     public static LevelControllerBehavior ControllerScript;
 
     public static LevelPhase Phase = LevelPhase.None;
-    public static List<TileController[]> Tiles = new List<TileController[]>();
+    public static List<List<TileController>> Tiles = new List<List<TileController>>();
 
     public static Coordinates PathCurrentPlayerLocation;
+    public static List<Coordinates> PathRoute = new List<Coordinates>();
 
     public static void EnterLevel()
     {
@@ -27,7 +28,7 @@ public static class LevelController
         foreach (Transform row in GameObject.FindGameObjectWithTag("level").transform)
         {
             TileController[] tilesInRow = row.GetComponentsInChildren<TileController>();
-            Tiles.Add(tilesInRow);
+            Tiles.Add(tilesInRow.ToList());
         }
     }
 
@@ -40,8 +41,8 @@ public static class LevelController
     {
         for (int row = 0; row < Tiles.Count; row++)
         {
-            TileController[] tilerow = Tiles[row];
-            for (int column = 0; column < tilerow.Length; column++)
+            List<TileController> tilerow = Tiles[row];
+            for (int column = 0; column < tilerow.Count; column++)
             {
                 if (tilerow[column] == tile)
                 {
@@ -63,7 +64,33 @@ public static class LevelController
             PathCurrentPlayerLocation + (0, -1)
         };
 
-        return pathableCoordinates.Contains(path);
+        if (pathableCoordinates.Contains(path))
+        {
+            List<Coordinates> adjacentCoordinates = new List<Coordinates>
+            {
+                path + (1, 0),
+                path + (-1, 0),
+                path + (0, 1),
+                path + (0, -1),
+            };
+
+            adjacentCoordinates.Remove(PathCurrentPlayerLocation);
+
+            foreach (Coordinates c in adjacentCoordinates)
+            {
+                if (c.Row >= 0 && c.Column >= 0 && c.Row < Tiles.Count && c.Column < Tiles[0].Count)
+                {
+                    if (GetTile(c).IsPath)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        return false;
     }
 }
 
