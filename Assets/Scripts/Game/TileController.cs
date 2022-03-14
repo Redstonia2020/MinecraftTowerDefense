@@ -37,7 +37,6 @@ public class TileController : MonoBehaviour
         if (LevelController.IsPathable(LevelController.GetTilePosition(this)) && !IsPath && !_unpathable)
         {
             CreatePath();
-
         }
     }
 
@@ -46,5 +45,6 @@ public class TileController : MonoBehaviour
         _pathRenderer.SetActive(true);
         IsPath = true;
         LevelController.PathCurrentPlayerLocation = LevelController.GetTilePosition(this);
+        LevelController.UpdatePathables();
     }
 }

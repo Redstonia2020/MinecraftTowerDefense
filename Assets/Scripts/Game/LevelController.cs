@@ -21,6 +21,7 @@ public static class LevelController
 
     public static Coordinates PathCurrentPlayerLocation;
     public static List<Coordinates> PathRoute = new List<Coordinates>();
+    public static List<Coordinates> PathableTiles = new List<Coordinates>();
 
     public static void EnterLevel()
     {
@@ -56,7 +57,12 @@ public static class LevelController
 
     public static bool IsPathable(Coordinates path)
     {
-        Coordinates[] pathableCoordinates = new Coordinates[]
+        return PathableTiles.Contains(path);
+    }
+
+    public static void UpdatePathables()
+    {
+        PathableTiles = new List<Coordinates>()
         {
             PathCurrentPlayerLocation + (1, 0),
             PathCurrentPlayerLocation + (-1, 0),
@@ -64,33 +70,44 @@ public static class LevelController
             PathCurrentPlayerLocation + (0, -1)
         };
 
-        if (pathableCoordinates.Contains(path))
+        List<Coordinates> pathableTester = new List<Coordinates>()
         {
-            List<Coordinates> adjacentCoordinates = new List<Coordinates>
+            PathCurrentPlayerLocation + (1, 0),
+            PathCurrentPlayerLocation + (-1, 0),
+            PathCurrentPlayerLocation + (0, 1),
+            PathCurrentPlayerLocation + (0, -1)
+        };
+
+        foreach (Coordinates tile in pathableTester)
+        {
+            bool isGood = true;
+            List<Coordinates> selectedAdjacent = new List<Coordinates>
             {
-                path + (1, 0),
-                path + (-1, 0),
-                path + (0, 1),
-                path + (0, -1),
+                tile + (1, 0),
+                tile + (-1, 0),
+                tile + (0, 1),
+                tile + (0, -1),
             };
 
-            adjacentCoordinates.Remove(PathCurrentPlayerLocation);
+            selectedAdjacent.Remove(PathCurrentPlayerLocation);
 
-            foreach (Coordinates c in adjacentCoordinates)
+            foreach (Coordinates adjacent in selectedAdjacent)
             {
-                if (c.Row >= 0 && c.Column >= 0 && c.Row < Tiles.Count && c.Column < Tiles[0].Count)
+                if (adjacent.Row >= 0 && adjacent.Column >= 0 && adjacent.Row < Tiles.Count && adjacent.Column < Tiles[0].Count)
                 {
-                    if (GetTile(c).IsPath)
+                    if (GetTile(adjacent).IsPath)
                     {
-                        return false;
+                        isGood = false;
+                        break;
                     }
                 }
             }
 
-            return true;
+            if (!isGood)
+            {
+                PathableTiles.Remove(tile);
+            }
         }
-
-        return false;
     }
 }
 
