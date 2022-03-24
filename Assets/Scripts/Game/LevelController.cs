@@ -35,7 +35,15 @@ public static class LevelController
 
     public static TileController GetTile(Coordinates c)
     {
-        return Tiles[c.Row][c.Column];
+        if (c.Row >= 0 && c.Column >= 0)
+        {
+            return Tiles[c.Row][c.Column];
+        }
+
+        else
+        {
+            return null;
+        }
     }
 
     public static Coordinates GetTilePosition(TileController tile)
@@ -62,7 +70,7 @@ public static class LevelController
 
     public static void UpdatePathables()
     {
-        PathableTiles = new List<Coordinates>()
+        var pathableTesting = new List<Coordinates>()
         {
             PathCurrentPlayerLocation + (1, 0),
             PathCurrentPlayerLocation + (-1, 0),
@@ -70,44 +78,77 @@ public static class LevelController
             PathCurrentPlayerLocation + (0, -1)
         };
 
-        List<Coordinates> pathableTester = new List<Coordinates>()
+        PathableTiles = new List<Coordinates>();
+
+        //List<Coordinates> pathableTester = new List<Coordinates>()
+        //{
+        //    PathCurrentPlayerLocation + (1, 0),
+        //    PathCurrentPlayerLocation + (-1, 0),
+        //    PathCurrentPlayerLocation + (0, 1),
+        //    PathCurrentPlayerLocation + (0, -1)
+        //};
+
+        foreach (Coordinates c in pathableTesting)
         {
-            PathCurrentPlayerLocation + (1, 0),
-            PathCurrentPlayerLocation + (-1, 0),
-            PathCurrentPlayerLocation + (0, 1),
-            PathCurrentPlayerLocation + (0, -1)
-        };
+            //bool isGood = true;
 
-        foreach (Coordinates tile in pathableTester)
-        {
-            bool isGood = true;
-            List<Coordinates> selectedAdjacent = new List<Coordinates>
+            //TileController tile = GetTile(c + (-1, 0));
+            //if (tile != null && tile.IsPath)
+            //{
+            //    isGood = false;
+            //}
+
+            //tile = GetTile(c + (0, -1));
+            //if (tile != null && tile.IsPath)
+            //{
+            //    isGood = false;
+            //}
+
+            if (GetTile(c) != null && !GetTile(c).Unpathable)
             {
-                tile + (1, 0),
-                tile + (-1, 0),
-                tile + (0, 1),
-                tile + (0, -1),
-            };
-
-            selectedAdjacent.Remove(PathCurrentPlayerLocation);
-
-            foreach (Coordinates adjacent in selectedAdjacent)
-            {
-                if (adjacent.Row >= 0 && adjacent.Column >= 0 && adjacent.Row < Tiles.Count && adjacent.Column < Tiles[0].Count)
+                if (IsGoodSide(c + (-1, 0)) && IsGoodSide(c + (0, -1)) && IsGoodSide(c + (1, 0)) && IsGoodSide(c + (0, 1)))
                 {
-                    if (GetTile(adjacent).IsPath)
-                    {
-                        isGood = false;
-                        break;
-                    }
+                    PathableTiles.Add(c);
                 }
             }
 
-            if (!isGood)
-            {
-                PathableTiles.Remove(tile);
-            }
+            //List<Coordinates> selectedAdjacent = new List<Coordinates>
+            //{
+            //    tile + (1, 0),
+            //    tile + (-1, 0),
+            //    tile + (0, 1),
+            //    tile + (0, -1),
+            //};
+
+            //selectedAdjacent.Remove(PathCurrentPlayerLocation);
+
+            //foreach (Coordinates adjacent in selectedAdjacent)
+            //{
+            //    if (adjacent.Row >= -1 && adjacent.Column >= -1 && adjacent.Row < Tiles.Count && adjacent.Column < Tiles[0].Count)
+            //    {
+            //        if (GetTile(adjacent).IsPath)
+            //        {
+            //            isGood = false;
+            //            break;
+            //        }
+            //    }
+
+            //    else
+            //    {
+            //        isGood = false;
+            //    }
+            //}
+
+            //if (!isGood)
+            //{
+            //    PathableTiles.Remove(c);
+            //}
         }
+    }
+
+    private static bool IsGoodSide(Coordinates c)
+    {
+        return GetTile(c) == null || GetTile(c) == GetTile(PathCurrentPlayerLocation) || !GetTile(c).IsPath;
     }
 }
 

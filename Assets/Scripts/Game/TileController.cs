@@ -5,9 +5,11 @@ using UnityEngine;
 public class TileController : MonoBehaviour
 {
     [SerializeField]
-    private bool _unpathable;
+    public bool Unpathable;
     [SerializeField]
     private GameObject _pathRenderer;
+    [SerializeField]
+    private GameObject _pathIndicatorRenderer;
 
     [HideInInspector]
     public bool IsPath = false;
@@ -19,7 +21,7 @@ public class TileController : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     void OnMouseDown()
@@ -34,7 +36,7 @@ public class TileController : MonoBehaviour
 
     private void CreatePathIfPossible()
     {
-        if (LevelController.IsPathable(LevelController.GetTilePosition(this)) && !IsPath && !_unpathable)
+        if (LevelController.IsPathable(LevelController.GetTilePosition(this)) && !IsPath && !Unpathable)
         {
             CreatePath();
         }
@@ -45,6 +47,24 @@ public class TileController : MonoBehaviour
         _pathRenderer.SetActive(true);
         IsPath = true;
         LevelController.PathCurrentPlayerLocation = LevelController.GetTilePosition(this);
+
+        if (LevelController.PathableTiles.Count > 0)
+        {
+            foreach (var path in LevelController.PathableTiles)
+            {
+                LevelController.GetTile(path)._pathIndicatorRenderer.SetActive(false);
+            }
+        }
+
         LevelController.UpdatePathables();
+
+        foreach (var path in LevelController.PathableTiles)
+        {
+            TileController tile = LevelController.GetTile(path);
+            if (tile != null)
+            {
+                tile._pathIndicatorRenderer.SetActive(true);
+            }
+        }
     }
 }
