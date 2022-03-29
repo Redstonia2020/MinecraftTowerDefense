@@ -17,6 +17,11 @@ public static class SceneChanger
         SceneManager.LoadScene(EnumToScene[scene]);
     }
 
+    public static void Reload()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     public static Dictionary<Scenes, string> EnumToScene = new Dictionary<Scenes, string>
     {
         { Scenes.Home, "Scenes/Selection/Home" },

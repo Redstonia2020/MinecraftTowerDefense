@@ -16,7 +16,6 @@ public class TileController : MonoBehaviour
 
     void Start()
     {
-        LevelController.EnterLevel();
     }
 
     void Update()
@@ -34,7 +33,7 @@ public class TileController : MonoBehaviour
         }
     }
 
-    private void CreatePathIfPossible()
+    public void CreatePathIfPossible()
     {
         if (LevelController.IsPathable(LevelController.GetTilePosition(this)) && !IsPath && !Unpathable)
         {

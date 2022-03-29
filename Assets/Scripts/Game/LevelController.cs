@@ -31,11 +31,13 @@ public static class LevelController
             TileController[] tilesInRow = row.GetComponentsInChildren<TileController>();
             Tiles.Add(tilesInRow.ToList());
         }
+
+        Debug.Log(Tiles.Count);
     }
 
     public static TileController GetTile(Coordinates c)
     {
-        if (c.Row >= 0 && c.Column >= 0)
+        if (c.Row >= 0 && c.Column >= 0 && c.Row < Tiles.Count && c.Column < Tiles[0].Count)
         {
             return Tiles[c.Row][c.Column];
         }
