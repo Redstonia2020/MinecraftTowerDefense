@@ -51,6 +51,7 @@
      <Compile Include="Assets\Scripts\Game\CameraController.cs" />
      <Compile Include="Assets\Scripts\SceneManagement\ChangeScene.cs" />
      <Compile Include="Assets\Scripts\Game\LevelController.cs" />
+     <Compile Include="Assets\Scripts\Animations\SpriteFadeInOutAnimation.cs" />
      <Compile Include="Assets\Scripts\Game\TileController.cs" />
      <Compile Include="Assets\Scripts\SceneManagement\SceneChanger.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

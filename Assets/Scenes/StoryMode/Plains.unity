@@ -13138,6 +13138,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tile (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 6761449548382575638, guid: b1efb8cca2b992d46ba33e11726c5a1b, type: 3}
+      propertyPath: _duration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6761449548382575638, guid: b1efb8cca2b992d46ba33e11726c5a1b, type: 3}
+      propertyPath: _lowerOpacity
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 6761449548382575638, guid: b1efb8cca2b992d46ba33e11726c5a1b, type: 3}
+      propertyPath: _upperOpacity
+      value: 255
+      objectReference: {fileID: 0}
+    - target: {fileID: 7704674786800162202, guid: b1efb8cca2b992d46ba33e11726c5a1b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1efb8cca2b992d46ba33e11726c5a1b, type: 3}
 --- !u!4 &904206150 stripped
@@ -13385,6 +13401,10 @@ PrefabInstance:
     - target: {fileID: 1766480429318745631, guid: b1efb8cca2b992d46ba33e11726c5a1b, type: 3}
       propertyPath: m_Name
       value: Tile (30)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3321861750546481590, guid: b1efb8cca2b992d46ba33e11726c5a1b, type: 3}
+      propertyPath: _endOfPath
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1efb8cca2b992d46ba33e11726c5a1b, type: 3}
@@ -14564,6 +14584,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tile (30)
       objectReference: {fileID: 0}
+    - target: {fileID: 3321861750546481590, guid: b1efb8cca2b992d46ba33e11726c5a1b, type: 3}
+      propertyPath: _endOfPath
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1efb8cca2b992d46ba33e11726c5a1b, type: 3}
 --- !u!4 &1005840326 stripped
@@ -15369,6 +15393,10 @@ PrefabInstance:
     - target: {fileID: 1766480429318745631, guid: b1efb8cca2b992d46ba33e11726c5a1b, type: 3}
       propertyPath: m_Name
       value: Tile (30)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3321861750546481590, guid: b1efb8cca2b992d46ba33e11726c5a1b, type: 3}
+      propertyPath: _endOfPath
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1efb8cca2b992d46ba33e11726c5a1b, type: 3}
@@ -16237,6 +16265,10 @@ PrefabInstance:
     - target: {fileID: 1766480429318745631, guid: b1efb8cca2b992d46ba33e11726c5a1b, type: 3}
       propertyPath: m_Name
       value: Tile (30)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3321861750546481590, guid: b1efb8cca2b992d46ba33e11726c5a1b, type: 3}
+      propertyPath: _endOfPath
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1efb8cca2b992d46ba33e11726c5a1b, type: 3}
@@ -18791,6 +18823,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tile (30)
       objectReference: {fileID: 0}
+    - target: {fileID: 3321861750546481590, guid: b1efb8cca2b992d46ba33e11726c5a1b, type: 3}
+      propertyPath: _endOfPath
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1efb8cca2b992d46ba33e11726c5a1b, type: 3}
 --- !u!4 &1270049172 stripped
@@ -20093,6 +20129,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tile (30)
       objectReference: {fileID: 0}
+    - target: {fileID: 1766480429318745631, guid: b1efb8cca2b992d46ba33e11726c5a1b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3321861750546481590, guid: b1efb8cca2b992d46ba33e11726c5a1b, type: 3}
+      propertyPath: _endOfPath
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7704674786800162202, guid: b1efb8cca2b992d46ba33e11726c5a1b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1efb8cca2b992d46ba33e11726c5a1b, type: 3}
 --- !u!4 &1347848926 stripped
@@ -20588,6 +20636,10 @@ PrefabInstance:
     - target: {fileID: 1766480429318745631, guid: b1efb8cca2b992d46ba33e11726c5a1b, type: 3}
       propertyPath: m_Name
       value: Tile (30)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3321861750546481590, guid: b1efb8cca2b992d46ba33e11726c5a1b, type: 3}
+      propertyPath: _endOfPath
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1efb8cca2b992d46ba33e11726c5a1b, type: 3}
@@ -21456,6 +21508,10 @@ PrefabInstance:
     - target: {fileID: 1766480429318745631, guid: b1efb8cca2b992d46ba33e11726c5a1b, type: 3}
       propertyPath: m_Name
       value: Tile (30)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3321861750546481590, guid: b1efb8cca2b992d46ba33e11726c5a1b, type: 3}
+      propertyPath: _endOfPath
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1efb8cca2b992d46ba33e11726c5a1b, type: 3}
@@ -28513,6 +28569,10 @@ PrefabInstance:
     - target: {fileID: 1766480429318745631, guid: b1efb8cca2b992d46ba33e11726c5a1b, type: 3}
       propertyPath: m_Name
       value: Tile (30)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3321861750546481590, guid: b1efb8cca2b992d46ba33e11726c5a1b, type: 3}
+      propertyPath: _endOfPath
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1efb8cca2b992d46ba33e11726c5a1b, type: 3}

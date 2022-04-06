@@ -10,7 +10,6 @@ public class LevelControllerBehavior : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("loaded scene");
         LevelController.ControllerScript = this;
         LevelController.PathCurrentPlayerLocation = _pathStartLocation;
         LevelController.EnterLevel();

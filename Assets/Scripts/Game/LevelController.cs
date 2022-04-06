@@ -23,6 +23,8 @@ public static class LevelController
     public static List<Coordinates> PathRoute = new List<Coordinates>();
     public static List<Coordinates> PathableTiles = new List<Coordinates>();
 
+    public static List<TileController> EndOfPathTiles = new List<TileController>();
+
     public static void EnterLevel()
     {
         Phase = LevelPhase.Pathmaking;
@@ -31,8 +33,15 @@ public static class LevelController
             TileController[] tilesInRow = row.GetComponentsInChildren<TileController>();
             Tiles.Add(tilesInRow.ToList());
         }
+    }
 
-        Debug.Log(Tiles.Count);
+    public static void EndPathing()
+    {
+        Phase = LevelPhase.BetweenWaves;
+        foreach (var tile in EndOfPathTiles)
+        {
+            tile.HideEndOfPathIndicator();
+        }
     }
 
     public static TileController GetTile(Coordinates c)

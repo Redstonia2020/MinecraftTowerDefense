@@ -6,16 +6,27 @@ public class TileController : MonoBehaviour
 {
     [SerializeField]
     public bool Unpathable;
+    
     [SerializeField]
     private GameObject _pathRenderer;
     [SerializeField]
     private GameObject _pathIndicatorRenderer;
+    [SerializeField]
+    private GameObject _endOfPathIndicator;
+
+    [SerializeField]
+    private bool _endOfPath;
 
     [HideInInspector]
     public bool IsPath = false;
 
     void Start()
     {
+        if (_endOfPath)
+        {
+            _endOfPathIndicator.SetActive(true);
+            LevelController.EndOfPathTiles.Add(this);
+        }
     }
 
     void Update()
@@ -55,15 +66,28 @@ public class TileController : MonoBehaviour
             }
         }
 
-        LevelController.UpdatePathables();
-
-        foreach (var path in LevelController.PathableTiles)
+        if (!_endOfPath)
         {
-            TileController tile = LevelController.GetTile(path);
-            if (tile != null)
+            LevelController.UpdatePathables();
+
+            foreach (var path in LevelController.PathableTiles)
             {
-                tile._pathIndicatorRenderer.SetActive(true);
+                TileController tile = LevelController.GetTile(path);
+                if (tile != null)
+                {
+                    tile._pathIndicatorRenderer.SetActive(true);
+                }
             }
         }
+
+        else
+        {
+            LevelController.EndPathing();
+        }
+    }
+
+    public void HideEndOfPathIndicator()
+    {
+        _endOfPathIndicator.SetActive(false);
     }
 }
