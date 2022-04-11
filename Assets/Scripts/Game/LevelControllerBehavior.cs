@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,7 +22,7 @@ public class LevelControllerBehavior : MonoBehaviour
         Keys();
     }
 
-    private static void Keys()
+    private void Keys()
     {
         if (LevelController.Phase == LevelPhase.Pathmaking)
         {
@@ -50,5 +51,11 @@ public class LevelControllerBehavior : MonoBehaviour
                 SceneChanger.Reload();
             }
         }
+    }
+
+    public IEnumerator WaitSeconds(float wait, Action waitFunction)
+    {
+        yield return new WaitForSecondsRealtime(wait);
+        waitFunction();
     }
 }

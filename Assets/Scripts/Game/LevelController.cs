@@ -9,7 +9,7 @@ public enum LevelPhase
     None,
     Pathmaking,
     BetweenWaves,
-    Attack,
+    Wave,
 }
 
 public static class LevelController
@@ -35,6 +35,12 @@ public static class LevelController
         }
     }
 
+    public static void BetweenWaves(float waitSeconds = 10)
+    {
+        Phase = LevelPhase.BetweenWaves;
+        Wait(waitSeconds, StartWave);
+    }
+
     public static void EndPathing()
     {
         Phase = LevelPhase.BetweenWaves;
@@ -42,6 +48,18 @@ public static class LevelController
         {
             tile.HideEndOfPathIndicator();
         }
+
+        BetweenWaves(30);
+    }
+
+    public static void StartWave()
+    {
+        Phase = LevelPhase.Wave;
+    }
+
+    public static void Wait(float seconds, Action waitFunction)
+    {
+        ControllerScript.StartCoroutine(ControllerScript.WaitSeconds(seconds, waitFunction));
     }
 
     public static TileController GetTile(Coordinates c)
