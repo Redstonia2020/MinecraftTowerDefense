@@ -25,6 +25,8 @@ public static class LevelController
 
     public static List<TileController> EndOfPathTiles = new List<TileController>();
 
+    public static TileController CurrentSelected;
+
     public static void EnterLevel()
     {
         Phase = LevelPhase.Pathmaking;
@@ -90,6 +92,15 @@ public static class LevelController
         }
 
         return (-1, -1);
+    }
+
+    public static void ChangeTower(TileController tile)
+    {
+        tile.SetActiveSelectedIndicator(true);
+        if (CurrentSelected)
+            CurrentSelected.SetActiveSelectedIndicator(false);
+
+        CurrentSelected = tile;
     }
 
     public static bool IsPathable(Coordinates path)

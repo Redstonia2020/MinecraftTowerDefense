@@ -10,6 +10,8 @@ public class TileController : MonoBehaviour
     [SerializeField]
     private GameObject _pathRenderer;
     [SerializeField]
+    private GameObject _selectedIndicator;
+    [SerializeField]
     private GameObject _pathIndicatorRenderer;
     [SerializeField]
     private GameObject _endOfPathIndicator;
@@ -42,6 +44,16 @@ public class TileController : MonoBehaviour
         {
             CreatePathIfPossible();
         }
+
+        else if (LevelController.Phase == LevelPhase.BetweenWaves || LevelController.Phase == LevelPhase.Wave)
+        {
+            InteractPlacement();
+        }
+    }
+
+    private void InteractPlacement()
+    {
+        LevelController.ChangeTower(this);
     }
 
     public void CreatePathIfPossible()
@@ -84,6 +96,11 @@ public class TileController : MonoBehaviour
         {
             LevelController.EndPathing();
         }
+    }
+
+    public void SetActiveSelectedIndicator(bool active)
+    {
+        _selectedIndicator.SetActive(active);
     }
 
     public void HideEndOfPathIndicator()

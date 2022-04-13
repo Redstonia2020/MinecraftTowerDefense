@@ -34,7 +34,7 @@ public class SpriteFadeInOutAnimation : MonoBehaviour
         {
             ChangeOpacity((byte)(_lowerOpacity + (_upperOpacity - _lowerOpacity) * (_timeElapsed / _duration)));
         }
-
+        
         else
         {
             ChangeOpacity((byte)(_upperOpacity - (_upperOpacity - _lowerOpacity) * (_timeElapsed / _duration)));
