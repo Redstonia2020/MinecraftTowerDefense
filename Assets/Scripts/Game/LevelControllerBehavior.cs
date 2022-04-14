@@ -9,6 +9,9 @@ public class LevelControllerBehavior : MonoBehaviour
     [SerializeField]
     private Coordinates _pathStartLocation;
 
+    [SerializeField]
+    public GameObject TileSelectionScreen;
+
     void Start()
     {
         LevelController.ControllerScript = this;

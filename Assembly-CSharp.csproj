@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\Animations\SpriteFadeInOutAnimation.cs" />
      <Compile Include="Assets\Scripts\Game\TileController.cs" />
      <Compile Include="Assets\Scripts\SceneManagement\SceneChanger.cs" />
+     <Compile Include="Assets\Scripts\Game\TowerSelectScreenController.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

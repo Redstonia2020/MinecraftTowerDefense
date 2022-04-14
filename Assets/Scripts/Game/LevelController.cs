@@ -96,11 +96,20 @@ public static class LevelController
 
     public static void ChangeTower(TileController tile)
     {
-        tile.SetActiveSelectedIndicator(true);
-        if (CurrentSelected)
-            CurrentSelected.SetActiveSelectedIndicator(false);
-
         CurrentSelected = tile;
+
+        if (!ControllerScript.TileSelectionScreen.activeInHierarchy)
+            ControllerScript.TileSelectionScreen.SetActive(true);
+        ControllerScript.TileSelectionScreen.transform.position = tile.transform.position;
+        ControllerScript.TileSelectionScreen.GetComponent<TowerSelectScreenController>().AdjustScreen();
+
+        GameObject.FindGameObjectWithTag("MainCamera").transform.position = tile.transform.position + new Vector3(0, 4.5f, -10);
+    }
+
+    public static bool IsAdjacentToPath(TileController c)
+    {
+        Coordinates pos = GetTilePosition(c);
+        return IsPath(pos + (1, 0)) || IsPath(pos + (-1, 0)) || IsPath(pos + (0, 1)) || IsPath(pos + (0, -1));
     }
 
     public static bool IsPathable(Coordinates path)
@@ -189,6 +198,13 @@ public static class LevelController
     private static bool IsGoodSide(Coordinates c)
     {
         return GetTile(c) == null || GetTile(c) == GetTile(PathCurrentPlayerLocation) || !GetTile(c).IsPath;
+    }
+
+    private static bool IsPath(Coordinates c)
+    {
+        if (GetTile(c) == null)
+            return false;
+        return GetTile(c).IsPath;
     }
 }
 
